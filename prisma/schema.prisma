@@ -65,3 +65,16 @@ model VerificationToken {
 
   @@unique([identifier, token])
 }
+
+model Task {
+  id         Int      @id @default(autoincrement())
+  text       String   @db.Text
+  status     String   @default("todo")
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+  end_date   DateTime
+  position   Int
+  assignee   Int?
+
+  @@unique([id])
+}
